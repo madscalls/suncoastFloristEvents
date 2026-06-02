@@ -1,0 +1,119 @@
+.wedding-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1rem 4rem;
+  display: flex;
+  justify-content: center;
+  background: #f7f3ff;
+}
+
+.wedding-form {
+  width: min(100%, 1040px);
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0 24px 80px rgba(94, 45, 145, 0.12);
+}
+
+.wedding-section {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 24px;
+  background: #fbf7ff;
+  border: 1px solid rgba(92, 46, 151, 0.12);
+}
+
+.wedding-section h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #3e1b79;
+}
+
+.wedding-section h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #5f308f;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.section-row {
+  display: grid;
+  gap: 1rem;
+}
+
+.party-block,
+.venue-block {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(92, 46, 151, 0.08);
+}
+
+.venue-blocks {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 0.5rem;
+  color: #4f3f74;
+  font-size: 0.95rem;
+}
+
+label input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(92, 46, 151, 0.15);
+  border-radius: 16px;
+  background: #fff;
+  font-size: 1rem;
+  color: #2f213d;
+}
+
+label input:focus {
+  outline: none;
+  border-color: #7f4bb8;
+  box-shadow: 0 0 0 4px rgba(126, 80, 188, 0.12);
+}
+
+.wedding-submit {
+  width: fit-content;
+  justify-self: end;
+  padding: 1rem 1.75rem;
+  border: none;
+  border-radius: 999px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6a3ab9, #3f1187);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wedding-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(103, 47, 180, 0.2);
+}
+
+@media (max-width: 760px) {
+  .wedding-form,
+  .wedding-section,
+  .venue-blocks {
+    width: 100%;
+  }
+
+  .input-grid,
+  .venue-blocks {
+    grid-template-columns: 1fr;
+  }
+}
