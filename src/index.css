@@ -37,12 +37,17 @@
 
 .event__type {
   font-weight: 300;
-  font-size: larger;
+  font-size: 30px;
+  border-bottom: solid 1px #55176f;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 .event__sub {
   font-weight: 100;
+  padding-bottom: 2rem;
   color: #839477;
+  border-bottom: solid 1px #55176f;
 }
 
 .form {
@@ -55,8 +60,6 @@
   max-width: calc(960px + 4rem);
   margin-left: -2rem;
   margin-bottom: 1.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 3px solid #963cbc;
 }
 .form__header-btm {
   width: calc(100% + 4rem);

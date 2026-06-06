@@ -4,12 +4,8 @@ import "./App.css";
 import greenFlowerPrint from "../src/assets/greenFloral.png";
 import heart from "../src/assets/heart.png";
 import star from "../src/assets/star.png";
-import church from "../src/assets/church.png";
-import crib from "../src/assets/crib.png";
 import WeddingForm from "./formPages/Wedding/Wedding";
 import GeneralForm from "./formPages/General/General";
-import BabyShowerForm from "./formPages/BabyShower/BabyShower";
-import FuneralForm from "./formPages/Funeral/Funeral";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -58,28 +54,6 @@ function HomePage() {
                 </div>
                 <h6 className="button__subtext">When's the big day?!</h6>
               </button>
-              <button
-                className="form__select-btn"
-                onClick={() => navigate("/baby-showers")}
-              >
-                <h3 className="button__text">Baby Showers</h3>
-                <div className="button__circle3">
-                  <img src={crib} alt="" className="button__icon" />
-                </div>
-                <h6 className="button__subtext">For a new little one</h6>
-              </button>
-              <button
-                className="form__select-btn"
-                onClick={() => navigate("/funerals")}
-              >
-                <h3 className="button__text">Funerals</h3>
-                <div className="button__circle4">
-                  <img src={church} alt="" className="button__icon" />
-                </div>
-                <h6 className="button__subtext">
-                  Sympathy, Memorials & Condolences
-                </h6>
-              </button>
             </div>
           </div>
         </div>
@@ -94,8 +68,6 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/general" element={<GeneralForm />} />
       <Route path="/weddings" element={<WeddingForm />} />
-      <Route path="/baby-showers" element={<BabyShowerForm />} />
-      <Route path="/funerals" element={<FuneralForm />} />
     </Routes>
   );
 }

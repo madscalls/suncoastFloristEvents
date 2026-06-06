@@ -7,6 +7,12 @@
   background: #f7f3ff;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .wedding-form {
   width: min(100%, 1040px);
   display: grid;
@@ -40,8 +46,9 @@
 
 .input-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
+  align-items: start;
 }
 
 .section-row {
@@ -60,7 +67,67 @@
 }
 
 .venue-blocks {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label input,
+label textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label input[type="file"] {
+  padding: 0.75rem 0.85rem;
+}
+
+.file-preview-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin-top: 1rem;
+}
+
+.file-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(92, 46, 151, 0.14);
+}
+
+.file-preview img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.file-icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #f2edff;
+  color: #5f308f;
+  font-size: 1.25rem;
+}
+
+.file-name {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #3e1b79;
+  word-break: break-word;
+}
+
+.submit-status {
+  margin: 0;
+  color: #3e1b79;
+  font-weight: 600;
 }
 
 label {
@@ -97,7 +164,9 @@ label input:focus {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .wedding-submit:hover {
