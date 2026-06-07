@@ -1,6 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Logo from "../src/assets/logo.png";
 import "./App.css";
+import floralFooter from "../src/assets/floral-footer.png";
 import greenFlowerPrint from "../src/assets/greenFloral.png";
 import heart from "../src/assets/heart.png";
 import star from "../src/assets/star.png";
@@ -11,7 +12,7 @@ function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className="home-container">
       <div className="page">
         <div className="header">
           <img src={greenFlowerPrint} alt="" className="header__img-L" />
@@ -58,7 +59,23 @@ function HomePage() {
           </div>
         </div>
       </div>
-    </>
+      <footer className="home-footer">
+        <img
+          src={floralFooter}
+          alt="Floral decoration"
+          className="footer-floral footer-floral-left"
+        />
+        <div className="footer-copy">
+          <span>© 2026 Suncoast Floristry</span>
+          <a href="tel:+19413656407">Call (941) 365-6407</a>
+        </div>
+        <img
+          src={floralFooter}
+          alt="Floral decoration"
+          className="footer-floral footer-floral-right"
+        />
+      </footer>
+    </div>
   );
 }
 

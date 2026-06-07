@@ -36,6 +36,7 @@
 }
 
 .event__type {
+  color: #55176f;
   font-weight: 300;
   font-size: 30px;
   border-bottom: solid 1px #55176f;
@@ -45,6 +46,7 @@
 
 .event__sub {
   font-weight: 100;
+  text-align: center;
   padding-bottom: 2rem;
   color: #839477;
   border-bottom: solid 1px #55176f;
@@ -185,9 +187,7 @@
 }
 
 .button__circle1,
-.button__circle2,
-.button__circle3,
-.button__circle4 {
+.button__circle2 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,25 +203,13 @@
 .button__circle1 {
   width: 2rem;
   height: 2rem;
-  background-color: rgba(195, 201, 83, 0.896);
+  background-color: rgba(86, 222, 48, 0.896);
 }
 
 .button__circle2 {
   width: 2rem;
   height: 2rem;
-  background-color: rgba(240, 33, 153, 0.363);
-}
-
-.button__circle3 {
-  width: 2rem;
-  height: 2rem;
-  background-color: rgba(22, 125, 221, 0.363);
-}
-
-.button__circle4 {
-  width: 2rem;
-  height: 2rem;
-  background-color: rgba(144, 139, 142, 0.363);
+  background-color: rgba(242, 14, 147, 0.886);
 }
 
 .button__icon {
