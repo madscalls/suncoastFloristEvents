@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import StatusModal from "../../components/StatusModal";
 import "./Wedding.css";
 
 export default function WeddingForm() {
-  const [status, setStatus] = useState(null);
+  const [modalStatus, setModalStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [previews, setPreviews] = useState([]);
   const { register, handleSubmit, watch } = useForm();
   const attachmentFiles = watch("attachments");
@@ -29,6 +31,7 @@ export default function WeddingForm() {
   }, [attachmentFiles]);
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true);
     const formData = new FormData();
 
     Object.entries(data).forEach(([key, value]) => {
@@ -48,11 +51,16 @@ export default function WeddingForm() {
         method: "POST",
         body: formData,
       });
-      const result = await response.json();
-      setStatus(result.message || "Form submitted successfully.");
+      if (response.ok) {
+        setModalStatus("success");
+      } else {
+        setModalStatus("error");
+      }
     } catch (error) {
       console.error(error);
-      setStatus("Unable to submit form. Please try again later.");
+      setModalStatus("error");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -443,11 +451,18 @@ export default function WeddingForm() {
           )}
         </section>
 
-        <button type="submit" className="wedding-submit">
-          Save Wedding Details
+        <button
+          type="submit"
+          className="wedding-submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Sending..." : "Submit Wedding Details"}
         </button>
-        {status && <p className="submit-status">{status}</p>}
       </form>
+
+      {modalStatus && (
+        <StatusModal type={modalStatus} onClose={() => setModalStatus(null)} />
+      )}
     </main>
   );
 }

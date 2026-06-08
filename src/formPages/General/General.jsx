@@ -1,19 +1,49 @@
 import { useForm } from "react-hook-form";
 import "./General.css";
+import { useState } from "react";
+import StatusModal from "../../components/StatusModal";
 
 export default function GeneralForm() {
+  const [modalStatus, setModalStatus] = useState(null); // null | "success" | "error"
+
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const attachments = watch("attachments");
 
-  const onSubmit = (data) => {
-    console.log(data);
-    alert("General event request submitted!");
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (key === "attachments") {
+        if (value && value.length) {
+          Array.from(value).forEach((file) =>
+            formData.append("attachments", file),
+          );
+        }
+      } else {
+        formData.append(key, value ?? "");
+      }
+    });
+
+    try {
+      const response = await fetch("/api/submit-general", {
+        method: "POST",
+        body: formData,
+      });
+      if (response.ok) {
+        setModalStatus("success");
+      } else {
+        setModalStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setModalStatus("error");
+    }
   };
 
   return (
@@ -152,10 +182,17 @@ export default function GeneralForm() {
           />
         </label>
 
-        <button type="submit" className="general-submit">
-          Send Request
+        <button
+          type="submit"
+          className="general-submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Sending..." : "Send Request"}{" "}
         </button>
       </form>
+      {modalStatus && (
+        <StatusModal type={modalStatus} onClose={() => setModalStatus(null)} />
+      )}
     </main>
   );
 }
